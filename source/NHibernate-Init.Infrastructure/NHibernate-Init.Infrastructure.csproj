@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A5CF78D-7007-4BA1-A4BA-DC94F15323C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NHibernate_Init.Infrastructure</RootNamespace>
+    <AssemblyName>NHibernate-Init.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="$(PROCESSOR_ARCHITEW6432) == 'AMD64'">
+      <ItemGroup>
+        <Reference Include="System.Data.SQLite">
+          <HintPath>..\..\tools\SQLite\x64\System.Data.SQLite.DLL</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="System.Data.SQLite">
+          <HintPath>..\..\tools\SQLite\x86\System.Data.SQLite.DLL</HintPath>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\packages\Castle.Windsor.2.5.2\lib\NET40\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\packages\FluentNHibernate.1.2.0.712\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0">
+      <HintPath>..\..\tools\NHProf\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Inflector.Net">
+      <HintPath>..\..\tools\Inflector\Inflector.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\..\packages\Machine.Specifications.0.4.9.0\lib\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\tools\Rhino Mocks\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\FluentMappingConventions.cs" />
+    <Compile Include="Configuration\FluentMappingsFromAssembly.cs" />
+    <Compile Include="Configuration\IMappingContributor.cs" />
+    <Compile Include="Configuration\INHibernatePersistenceModel.cs" />
+    <Compile Include="Configuration\IPersistenceConfiguration.cs" />
+    <Compile Include="Configuration\IRegisterComponentsOnStartup.cs" />
+    <Compile Include="Configuration\IRequireConfigurationOnStartup.cs" />
+    <Compile Include="Configuration\NHibernatePersistenceModel.cs" />
+    <Compile Include="Configuration\NHibernatePersistenceModelSpecs.cs">
+      <DependentUpon>NHibernatePersistenceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\SQLiteInMemoryDatabaseConfiguration.cs" />
+    <Compile Include="Configuration\SqlServerPersistenceConfiguration.cs" />
+    <Compile Include="Configuration\SqlServerPersistenceConfigurationSpecs.cs">
+      <DependentUpon>SqlServerPersistenceConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Container\ArrayDependencyFacility.cs" />
+    <Compile Include="Container\ArraySubDependencyResolver.cs" />
+    <Compile Include="Persistence\INHibernateInitializationAware.cs" />
+    <Compile Include="Persistence\INHibernateSessionFactory.cs" />
+    <Compile Include="Persistence\IUnitOfWork.cs" />
+    <Compile Include="Persistence\NHibernateDbConversation.cs" />
+    <Compile Include="Persistence\NHibernateDbConversationSpecs.cs">
+      <DependentUpon>NHibernateDbConversation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\NHibernateEventListenerInitializer.cs" />
+    <Compile Include="Persistence\NHibernateEventListenerInitializerSpecs.cs">
+      <DependentUpon>NHibernateEventListenerInitializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\NHibernateProfilerInitializer.cs" />
+    <Compile Include="Persistence\NHibernateSessionFactory.cs" />
+    <Compile Include="Persistence\NHibernateSessionFactorySpecs.cs">
+      <DependentUpon>NHibernateSessionFactory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\NHibernateUnitOfWork.cs" />
+    <Compile Include="Persistence\NHibernateUnitOfWorkSpecs.cs">
+      <DependentUpon>NHibernateUnitOfWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NHibernate-Init.Shared\NHibernate-Init.Shared.csproj">
+      <Project>{9A661A39-C0D2-42DF-A6BE-FE4F95CBFADC}</Project>
+      <Name>NHibernate-Init.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

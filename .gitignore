@@ -1,0 +1,16 @@
+# Lines that start with '#' are comments.
+
+*.bak
+*.suo
+*.user
+*.cache
+*.log
+*.Publish.xml
+*~
+~*
+*.swp
+_ReSharper.*
+
+
+local-properties.yml
+build

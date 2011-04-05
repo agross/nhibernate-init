@@ -1,0 +1,23 @@
+<%= optional_yaml('local-properties') %>
+
+global:
+  project: NHibernate-Init
+  
+  # Directories used for the build.
+  dir:
+    build: build
+    test_results: build/test-results
+    source: source
+
+  # Build configuration.
+  build:
+    configuration: Debug
+    number: <%= ENV['BUILD_NUMBER'] %>
+    commit_sha: <%= ENV['BUILD_VCS_NUMBER'] || "no SHA" %>
+
+  # Tools used/invoked during the build.
+  tools:
+    mspec: packages/Machine.Specifications.0.4.9.0/tools/mspec-clr4.exe
+
+development:
+  default_to: global
