@@ -30,7 +30,7 @@ namespace NHibernate_Init.Infrastructure.Persistence
 
 		public void Insert(object entity)
 		{
-			_unitOfWork.CurrentSession.SaveOrUpdate(entity);
+			_unitOfWork.CurrentSession.Save(entity);
 		}
 
 		public TResult Query<TResult>(IDomainQuery<TResult> query)
@@ -40,7 +40,7 @@ namespace NHibernate_Init.Infrastructure.Persistence
 			return query.Execute(_unitOfWork.CurrentSession);
 		}
 
-	    void ApplyQueryStrategies<TResult>(IDomainQuery<TResult> query)
+		void ApplyQueryStrategies<TResult>(IDomainQuery<TResult> query)
 		{
 			if (Container == null || Reflection == null)
 			{

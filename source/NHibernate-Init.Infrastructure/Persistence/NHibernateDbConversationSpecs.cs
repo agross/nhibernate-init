@@ -39,7 +39,7 @@ namespace NHibernate_Init.Infrastructure.Persistence
 		Because of = () => DbConversation.Insert(Entity);
 
 		It should_call_save_on_the_session =
-			() => Session.AssertWasCalled(x => x.SaveOrUpdate(Entity));
+			() => Session.AssertWasCalled(x => x.Save(Entity));
 	}
 
 	[Subject(typeof(NHibernateDbConversation))]
