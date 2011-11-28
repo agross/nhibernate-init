@@ -6,14 +6,14 @@ namespace NHibernate_Init.Domain
 {
     public class Blog : Entity
     {
-        ICollection<Post> _posts = new List<Post>();
+    	readonly ICollection<Post> _posts = new List<Post>();
 
-        public IEnumerable<Post> Posts
+        public virtual IEnumerable<Post> Posts
         {
             get { return _posts; }
         }
 
-        public void AddPost(Post post)
+		public virtual void AddPost(Post post)
         {
             _posts.Add(post);
         }

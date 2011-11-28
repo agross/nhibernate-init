@@ -9,7 +9,7 @@ namespace NHibernate_Init.Domain.Mapping
 			Id(x => x.Id).GeneratedBy.HiLo("3");
 
 			Map(x => x.Title);
-			HasOne(x => x.Tags);
+			References(x => x.Tags).LazyLoad().Cascade.All();
 		}
 	}
 }
