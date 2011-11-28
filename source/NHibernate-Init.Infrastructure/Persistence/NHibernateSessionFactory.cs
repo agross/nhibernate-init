@@ -4,7 +4,7 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Utils;
 
 using NHibernate;
-using NHibernate.ByteCode.Castle;
+using NHibernate.Bytecode;
 
 using NHibernate_Init.Infrastructure.Configuration;
 
@@ -36,7 +36,7 @@ namespace NHibernate_Init.Infrastructure.Persistence
 			Initializers.Each(x => x.BeforeInitialization());
 
 			var configuration = Fluently.Configure()
-                .ProxyFactoryFactory<ProxyFactoryFactory>()
+                .ProxyFactoryFactory<DefaultProxyFactoryFactory>()
                 .Database(_persistenceConfiguration.GetConfiguration())
 				.Mappings(_persistenceModel.AddMappings);
 

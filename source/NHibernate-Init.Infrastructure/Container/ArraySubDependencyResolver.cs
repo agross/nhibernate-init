@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
@@ -31,7 +33,7 @@ namespace NHibernate_Init.Infrastructure.Container
 			return dependency.TargetType != null &&
 			       dependency.TargetType.IsArray &&
 			       dependency.TargetType.GetElementType().IsInterface &&
-				   !model.Parameters.Contains(dependency.DependencyKey);
+				   !model.Parameters.Any(x => x.Value == dependency.DependencyKey);
 		}
 	}
 }

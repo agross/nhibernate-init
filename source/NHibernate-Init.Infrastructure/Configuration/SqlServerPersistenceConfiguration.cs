@@ -1,7 +1,5 @@
 using FluentNHibernate.Cfg.Db;
 
-using NHibernate.ByteCode.Castle;
-
 namespace NHibernate_Init.Infrastructure.Configuration
 {
 	public class SqlServerPersistenceConfiguration : IPersistenceConfiguration
@@ -20,7 +18,6 @@ namespace NHibernate_Init.Infrastructure.Configuration
 			var configuration = MsSqlConfiguration
 				.MsSql2005
 				.ConnectionString(c => c.Is(_connectionString))
-				.ProxyFactoryFactory(typeof(ProxyFactoryFactory).AssemblyQualifiedName)
 				.AdoNetBatchSize(10)
 				.UseReflectionOptimizer()
 				.UseOuterJoin();

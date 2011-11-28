@@ -17,7 +17,7 @@ global:
 
   # Tools used/invoked during the build.
   tools:
-    mspec: packages/Machine.Specifications.0.4.9.0/tools/mspec-clr4.exe
+    mspec: packages/Machine.Specifications.0.5.0.0/tools/mspec-clr4.exe
 
 development:
   default_to: global
